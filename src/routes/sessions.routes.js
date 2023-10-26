@@ -15,7 +15,7 @@ router.post("/signup", async(req,res) => {
 })
 
 //~~~~~~~~~~~~~~~ROLES~~~~~~~~~~~~~~~//
-router.get("/admin", auth, (req,res) => {
+router.get("/admin", (req,res,next) => {
     const{email, password} = req.query;
     if(email !== "adminCoder@coder.com" && password !== "adminCod3r123"){
         return res.status(401).send("No tienes autorización")
