@@ -39,7 +39,7 @@ router.post("/login", async(req,res) => {
     }
 //~~~USUARIO Y CONTRASEÑA VALIDOS, SE CREA LA SESIÓN~~~//
     req.session.email = usuario.email;
-    res.redirect("/profile");
+    res.render('profile');
 
     } catch (error) {
         res.render("login", {error:"ERROR: No se pudo iniciar sesión"});
