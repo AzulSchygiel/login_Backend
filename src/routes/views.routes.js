@@ -8,40 +8,27 @@ router.get("/", (req,res) => {
 })
 
 router.get("/videojuegos", (req,res) => {
-    if(req.session.username){
-        const username = req.session.username;
-        res.render("productos", {username});
+    if(req.session.email){
+        const email = req.session.email;
+        res.render("productos", {email});
         } else {
             res.redirect("/iniciarsesion");
         }
 })
 
 router.get("/registro", (req,res) => {
-    if(req.session.username && req.session.email && req.session.password){
-        const username = req.session.username;
-        const email = req.session.email;
-        const password = req.session.password;
-        res.render("signup", {username, email, password});
-    } else {
-        res.redirect("/productos");
-    }
+        res.render('signup');
 })
 
 router.get("/iniciarsesion", (req,res) => {
-    if(req.session.username && req.session.password){
-    const datoemail = req.session.email;
-    const datopassword = req.session.password;
-    res.render("login", {datoemail, datopassword});
-    } else {
-        res.redirect("/productos");
-    }
+    res.render('login');
 })
 
 //~~~~~~~~~~~~RUTA PRIVADA~~~~~~~~~~~~~/
 router.get("/perfil", (req,res) => {
-    if(req.session.username){
-    const nombredeusuario = req.session.username;
-    res.render("profile", {nombredeusuario});
+    if(req.session.email){
+    const emaildeusuario = req.session.email;
+    res.render("profile", {emaildeusuario});
     } else {
         res.redirect("/iniciarsesion");
     }
